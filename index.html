@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURSOR METHOD</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+     <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 650px;
+    background-color: #000;
+}
+
+.eyes {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 20px;
+}
+
+.eye {
+    width: 150px;  
+    height: 150px; 
+    margin-top: 400px;
+    border-radius: 50%;
+    background-color: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
+}
+
+.eyeball {
+    width: 70px;  
+    height: 70px; 
+    border-radius: 50%;
+    background-color: #da2323;
+    position: relative;
+    overflow: hidden;
+}
+
+.pupil {
+    width: 30px;  
+    height: 30px;  
+    border-radius: 50%;
+    background-color: #000; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+     </style>
+</head>
+<body onmousemove="move(event)">
+    <div class="eyes">
+        <div class="eye">
+          <div class="eyeball">
+              <div class="pupil"></div>
+          </div>
+        </div>
+        <div class="eye">
+          <div class="eyeball">
+              <div class="pupil"></div>
+          </div>
+        </div>
+    </div>
+    <script>
+        const eyeballs = document.querySelectorAll(".eyeball");
+function move(item) {
+    for (var i = 0; i < eyeballs.length; i++) {
+        var rectX = eyeballs[i].offsetLeft + 35;
+        var rectY = eyeballs[i].offsetTop + 35;
+        var x = (item.pageX - rectX) / 10 + "px"; 
+        var y = (item.pageY - rectY) / 10 + "px"; 
+        eyeballs[i].style.transform = "translate(" + x + "," + y + ")";
+    }
+}
+    </script>    
+</body>
+</html>
